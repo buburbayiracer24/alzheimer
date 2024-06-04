@@ -7,11 +7,11 @@ from PIL import Image, ImageOps
 
 st.set_page_config(page_title="Deteksi Alzheimer.AI")
 
-model = load_model('C://Users//Acer///model//modelalzheimer.h5')
+model = load_model('modelalzheimer.h5')
 
 
 def prediksi_gambar(file_path):
-    class_names = open("C://Users//Acer///model//labelsalzheimer.txt", "r").readlines()
+    class_names = open("labelsalzheimer.txt", "r").readlines()
 
     # Create the array of the right shape to feed into the keras model
     # The 'length' or number of images you can put into the array is
@@ -130,10 +130,10 @@ else:
                 col2.markdown(f'<p stye="text-align:left;">{caption2}</p>', unsafe_allow_html=True)
 
     images_info = [
-        {'path':'C:\\Users\\Acer\\vm\\akurasi.png', 'title':'Accuracy Class', 'caption':'Data “Accuracy per class” menunjukkan bahwa model memiliki akurasi (0.87) untuk mengidentifikasi Alzheimer, Dan (0.93) untuk mengidentifikasi Non Demented atau Normal. Ini menunjukkan bahwa model efektif dalam membedakan foto hasil MRI amtara Alzheimer dan Non Demented atau Normal.'},
-        {'path':'C:\\Users\\Acer\\vm\\epoch.png', 'title':'Accuracy Epoch', 'caption':'Grafik akurasi per epoch menunjukkan bahwa akurasi pada data pelatihan (garis biru) meningkat dengan cepat dan mencapai nilai tinggi mendekati 1 setelah sekitar 50 epoch, tetapi mengalami beberapa fluktuasi awal. Akurasi pada data pengujian (garis oranye) juga meningkat di awal, namun setelah sekitar 50 epoch stabil pada nilai sekitar 0.85 dan tidak mengalami peningkatan signifikan lebih lanjut. Ini mengindikasikan bahwa model mampu belajar dari data pelatihan, namun setelah 50 epoch, peningkatan akurasi pada data pelatihan tidak diikuti oleh peningkatan pada data pengujian, mengisyaratkan kemungkinan overfitting, di mana model tidak mampu generalisasi dengan baik ke data baru.'},
-        {'path':'C:\\Users\\Acer\\vm\\confusionmatrix.png', 'title':'Confusion Matrix', 'caption':'Pada matriks kebingungan ini, terdapat dua kelas: "Alzheimer" dan "Normal". Elemen diagonal (419 dan 448) mewakili jumlah prediksi yang benar untuk setiap kelas. Elemen di luar diagonal (61 dan 32) mewakili jumlah prediksi yang salah atau kesalahan klasifikasi. Dari matriks tersebut, kita dapat melihat bahwa model berhasil memprediksi 419 instance sebagai "Alzheimer" dan 448 instance sebagai "Normal". Namun, model juga salah mengklasifikasi 61 instance sebagai "Alzheimer" padahal sebenarnya "Normal", dan 32 instance sebagai "Normal" padahal sebenarnya "Alzheimer". Informasi ini membantu menilai akurasi, presisi, recall, dan metrik performa lainnya dari model.'},
-        {'path':'C:\\Users\\Acer\\vm\\lossepoch.png', 'title':'Loss Epoch', 'caption':'Grafik tersebut menunjukkan bahwa model mengalami overfitting setelah sekitar 50 epoch, di mana loss pada data pelatihan terus menurun sementara test loss meningkat tajam dan tetap tinggi. Ini mengindikasikan bahwa model terlalu menyesuaikan data pelatihan sehingga tidak mampu generalisasi dengan baik ke data baru. Untuk mengatasi masalah ini, dapat digunakan teknik seperti early stopping, regularisasi, atau penambahan data pelatihan untuk meningkatkan kemampuan generalisasi model.'},
+        {'akurasi.png', 'title':'Accuracy Class', 'caption':'Data “Accuracy per class” menunjukkan bahwa model memiliki akurasi (0.87) untuk mengidentifikasi Alzheimer, Dan (0.93) untuk mengidentifikasi Non Demented atau Normal. Ini menunjukkan bahwa model efektif dalam membedakan foto hasil MRI amtara Alzheimer dan Non Demented atau Normal.'},
+        {'epoch.png', 'title':'Accuracy Epoch', 'caption':'Grafik akurasi per epoch menunjukkan bahwa akurasi pada data pelatihan (garis biru) meningkat dengan cepat dan mencapai nilai tinggi mendekati 1 setelah sekitar 50 epoch, tetapi mengalami beberapa fluktuasi awal. Akurasi pada data pengujian (garis oranye) juga meningkat di awal, namun setelah sekitar 50 epoch stabil pada nilai sekitar 0.85 dan tidak mengalami peningkatan signifikan lebih lanjut. Ini mengindikasikan bahwa model mampu belajar dari data pelatihan, namun setelah 50 epoch, peningkatan akurasi pada data pelatihan tidak diikuti oleh peningkatan pada data pengujian, mengisyaratkan kemungkinan overfitting, di mana model tidak mampu generalisasi dengan baik ke data baru.'},
+        {'confusionmatrix.png', 'title':'Confusion Matrix', 'caption':'Pada matriks kebingungan ini, terdapat dua kelas: "Alzheimer" dan "Normal". Elemen diagonal (419 dan 448) mewakili jumlah prediksi yang benar untuk setiap kelas. Elemen di luar diagonal (61 dan 32) mewakili jumlah prediksi yang salah atau kesalahan klasifikasi. Dari matriks tersebut, kita dapat melihat bahwa model berhasil memprediksi 419 instance sebagai "Alzheimer" dan 448 instance sebagai "Normal". Namun, model juga salah mengklasifikasi 61 instance sebagai "Alzheimer" padahal sebenarnya "Normal", dan 32 instance sebagai "Normal" padahal sebenarnya "Alzheimer". Informasi ini membantu menilai akurasi, presisi, recall, dan metrik performa lainnya dari model.'},
+        {'lossepoch.png', 'title':'Loss Epoch', 'caption':'Grafik tersebut menunjukkan bahwa model mengalami overfitting setelah sekitar 50 epoch, di mana loss pada data pelatihan terus menurun sementara test loss meningkat tajam dan tetap tinggi. Ini mengindikasikan bahwa model terlalu menyesuaikan data pelatihan sehingga tidak mampu generalisasi dengan baik ke data baru. Untuk mengatasi masalah ini, dapat digunakan teknik seperti early stopping, regularisasi, atau penambahan data pelatihan untuk meningkatkan kemampuan generalisasi model.'},
     ]
     for i in range(0, len(images_info), 2):
         if i + 1 < len(images_info):
