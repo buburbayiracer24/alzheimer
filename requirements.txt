@@ -1,0 +1,6 @@
+opencv-phyton-headless
+keras==2.15.0
+temsorflow==2.15.0
+numpy
+pandas
+streamlit
